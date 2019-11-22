@@ -8,7 +8,7 @@ import assistance as assist
 from endpoints import get_player, post_player, put_player, delete_player
 
 # third-party
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_api import status
 import werkzeug
 
@@ -35,6 +35,11 @@ players_list = assist.deserialize_players()
 #######################################
 # Routes
 ###################
+
+
+@app.route('/docs')
+def docs():
+    return render_template('docs.html')
 
 
 @app.route('/player', methods=["POST", "GET", "PUT", "DELETE"])
