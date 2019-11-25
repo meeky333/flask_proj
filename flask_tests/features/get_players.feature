@@ -1,27 +1,27 @@
 Feature: testing the first feature
 
-Scenario: posting player status code
-    When I post a player
+Scenario: getting players status code
+    When I get the list of all players
     And I get the response status code
-    Then the status code should be "201"
+    Then the status code should be "200"
 
-Scenario: posting player content type
-    When I post a player
+Scenario: getting players content type
+    When I get the list of all players
     And I get the response headers
     Then response content type should be "application/json"
 
-Scenario: posting player data type
-    When I post a player
+Scenario: getting players data type
+    When I get the list of all players
     And I get the response json
-    Then the response should be type "dictionary"
+    Then the response should be type "list"
 
-Scenario: posting player response length
-    When I post a player
+Scenario: getting players response length
+    When I get the list of all players
     And I get the response json
     Then the response should have length "6"
 
-Scenario: posting player response expected fields
-    When I post a player
+Scenario: getting players response expected fields
+    When I get the list of all players
     And I get the response json
     Then the expected fields should be present
     | field     |
@@ -32,8 +32,8 @@ Scenario: posting player response expected fields
     | ratio     |
     | wins      |
 
-Scenario: posting player response expected data types
-    When I post a player
+Scenario: getting players response expected data types
+    When I get the list of all players
     And I get the response json
     Then the expected fields should be present
     | field     | data_type |

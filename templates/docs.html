@@ -1,81 +1,248 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.accordion {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .accordion {
+      background-color: #eee;
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+      transition: 0.4s;
+    }
 
-.active, .accordion:hover {
-  background-color: #ccc;
-}
+    .active,
+    .accordion:hover {
+      background-color: #ccc;
+    }
 
-.accordion:after {
-  content: '\002B';
-  color: #777;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-}
+    .accordion:after {
+      content: '\002B';
+      color: #777;
+      font-weight: bold;
+      float: right;
+      margin-left: 5px;
+    }
 
-.active:after {
-  content: "\2212";
-}
+    .active:after {
+      content: "\2212";
+    }
 
-.panel {
-  padding: 0 18px;
-  background-color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
-</style>
+    .panel {
+      padding: 0 18px;
+      background-color: white;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+    }
+  </style>
 </head>
+
 <body>
 
-<h2>Documentation for the Flask Chess Club API</h2>
-<p>The following Accordians can provide details on how to use the API for the flask Chess Club.</p>
+  <h2>Documentation for the Flask Chess Club API</h2>
+  <p>The following Accordians can provide details on how to use the API for the flask Chess Club.</p>
 
-<button class="accordion"><div color: green>GET</div> /players</button>
+
+<!--Get Players-->
+  <button class="accordion">GET /players</button>
+  <div class="panel">
+
+    <br>
+
+    <div style="background-color:rgb(220, 255, 180)">
+      <b>Body: </b>
+      <i>No body neccesary</i>
+    </div>
+
+    <br>
+
+    <div style="background-color:rgb(180, 230, 240)">
+      <b>Response: </b>
+      <i>200</i>
+      <code>
+    [{"firstname": unicode,"lastname": unicode,"losses": int,"playerid": unicode,"ratio": float"wins": int,}]
+    </code>
+    </div>
+  </div>
+
+<!--Get Player-->
+<button class="accordion">GET /player</button>
 <div class="panel">
-  <p></p>
+
+  <br>
+
+  <div style="background-color:rgb(220, 255, 180)">
+    <b>Body: </b>
+    <code>[{"firstname": unicode,"lastname": unicode,"losses": int,"playerid": unicode,"ratio": float,"wins": int}]</code>
+  </div>
+
+  <br>
+
+  <div style="background-color:rgb(180, 230, 240)">
+    <b>Response: </b>
+    <i>200</i>
+    <code>[{"firstname": unicode,"lastname": unicode,"losses": int,"playerid": unicode,"ratio": float,"wins": int}]</code>
+  </div>
 </div>
 
-<button class="accordion">Section 2</button>
+<!--Get Player with UUID-->
+<button class="accordion">GET /player/:uuid</button>
 <div class="panel">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+  <br>
+
+  <div style="background-color:rgb(220, 255, 180)">
+    <b>Body: </b>
+    <code>
+      {"playerid": unicode}
+    </code>
+  </div>
+
+  <br>
+
+  <div style="background-color:rgb(180, 230, 240)">
+    <b>Response: </b>
+    <i>200</i>
+    <code>
+      [{"firstname": unicode,"lastname": unicode,"losses": int,"playerid": unicode,"ratio": float,"wins": int}]
+    </code>
+  </div>
+
 </div>
 
-<button class="accordion">Section 3</button>
+<!--Post Player-->
+<button class="accordion">POST /player</button>
 <div class="panel">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+  <br>
+
+  <div style="background-color:rgb(220, 255, 180)">
+    <b>Body: </b>
+    <code>[{"firstname": unicode,"lastname": unicode,"losses": int,"wins": int}]</code>
+  </div>
+
+  <br>
+
+  <div style="background-color:rgb(180, 230, 240)">
+    <b>Response: </b>
+    <i>200</i>
+    <code>[{"firstname": unicode,"lastname": unicode,"losses": int,"playerid": unicode,"ratio": float,"wins": int}]</code>
+  </div>
 </div>
 
+<!--Put Player-->
+<button class="accordion">PUT /player</button>
+<div class="panel">
+
+  <br>
+
+  <div style="background-color:rgb(220, 255, 180)">
+    <b>Body: </b>
+    <code>["identification": {"firstname": unicode,"lastname": unicode,"losses": int,"wins": int},
+           "changes": {"firstname": unicode,"lastname": unicode,"losses": int,"wins": int}]</code>
+  </div>
+
+  <br>
+
+  <div style="background-color:rgb(180, 230, 240)">
+    <b>Response: </b>
+    <i>202</i>
+    <code>"ACCEPTED"</code>
+  </div>
+</div>
+
+<!--Put Player with UUID-->
+<button class="accordion">PUT /player/:uuid</button>
+<div class="panel">
+
+  <br>
+
+  <div style="background-color:rgb(220, 255, 180)">
+    <b>Body: </b>
+    <code>no bodt necessary</code>
+  </div>
+
+  <br>
+
+  <div style="background-color:rgb(180, 230, 240)">
+    <b>Response: </b>
+    <i>202</i>
+    <code>
+      "ACCEPTED"
+    </code>
+  </div>
+
+</div>
+
+
+<!--Delete Player-->
+<button class="accordion">PUT /player</button>
+<div class="panel">
+
+  <br>
+
+  <div style="background-color:rgb(220, 255, 180)">
+    <b>Body: </b>
+    <code>[{"firstname": unicode,"lastname": unicode,"losses": int,"playerid": unicode,"ratio": float,"wins": int}]</code>
+  </div>
+
+  <br>
+
+  <div style="background-color:rgb(180, 230, 240)">
+    <b>Response: </b>
+    <i>200</i>
+    <code>"OK"</code>
+  </div>
+</div>
+
+<!--Delete Player with UUID-->
+<button class="accordion">PUT /player/:uuid</button>
+<div class="panel">
+
+  <br>
+
+  <div style="background-color:rgb(220, 255, 180)">
+    <b>Body: </b>
+    <code>no bodt necessary</code>
+  </div>
+
+  <br>
+
+  <div style="background-color:rgb(180, 230, 240)">
+    <b>Response: </b>
+    <i>200</i>
+    <code>
+      "OK"
+    </code>
+  </div>
+
+</div>
+
+
+<!--scripts-->
 <script>
-var acc = document.getElementsByClassName("accordion");
-var i;
+  var acc = document.getElementsByClassName("accordion");
+  var i;
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
-  });
-}
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  }
 </script>
 
 </body>
+</html>

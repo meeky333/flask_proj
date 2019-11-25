@@ -24,4 +24,4 @@ def new_player():
         "lastname": namegenerator.gen(),
         "wins": random.randint(0, 100),
         "losses": random.randint(0, 100)
-    } 
+    }
