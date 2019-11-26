@@ -10,27 +10,27 @@ filename = "{}/player.json".format(dir_path)
 def deserialize_players():
 
     players = []
-    with open(filename, "r") as f:
-        try:
+    try:
+        with open(filename, "r") as f:
             players_list = json.load(f)
-        except Exception:
-            print("could not load file")
-            players_list = []
+    except Exception:
+        print("could not load file")
+        players_list = []
 
-        for json_player in players_list:
+    for json_player in players_list:
 
-            player = Player(
-                firstname=json_player["firstname"],
-                lastname=json_player["lastname"],
-                wins=json_player["wins"],
-                losses=json_player["losses"])
+        player = Player(
+            firstname=json_player["firstname"],
+            lastname=json_player["lastname"],
+            wins=json_player["wins"],
+            losses=json_player["losses"])
 
-            if "playerid" in json_player:
-                player.playerid = json_player["playerid"]
+        if "playerid" in json_player:
+            player.playerid = json_player["playerid"]
 
-            players.append(player)
+        players.append(player)
 
-        return players
+    return players
 
 def serialize_players(players_list):
 

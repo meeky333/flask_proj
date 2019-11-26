@@ -4,14 +4,21 @@ import logging
 
 # Third party
 import requests
+import vcr
 from behave import use_fixture
 
 
 def before_all(context):
-    context.tlog = logging.getLogger("FlaskTests")
+    context.logger = logging.getLogger("FlaskTests")
     context.base_address = os.getenv("MBASE_ADDR", "http://127.0.0.1:5000")
-    context.player = []
+    context.player = {}
 
     context.session = requests.Session()
 
-    # logging.getLogger("urllib3").setLevel(logging.WARNING)
+    context.vcr = vcr.VCR(
+        serializer="json",
+        cassette_library_dir="cassettes",
+        record_mode="new_episodes",
+        match_on=["uri", "method", "body"])
+
+    logging.getLogger("vcr").setLevel(logging.WARNING)

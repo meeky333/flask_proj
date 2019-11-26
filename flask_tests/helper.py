@@ -1,5 +1,5 @@
 import random
-import namegenerator
+import names
 
 
 def build_url(*args):
@@ -20,8 +20,8 @@ def new_player():
     and returns the player as a dictionary"""
 
     return {
-        "firstname": namegenerator.gen(),
-        "lastname": namegenerator.gen(),
-        "wins": random.randint(0, 100),
-        "losses": random.randint(0, 100)
+        "firstname": names.get_first_name(),
+        "lastname": names.get_last_name(),
+        "wins": random.randint(0, 20),
+        "losses": random.randint(0, 20)
     }

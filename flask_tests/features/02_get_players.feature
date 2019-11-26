@@ -13,16 +13,19 @@ Scenario: getting players content type
 Scenario: getting players data type
     When I get the list of all players
     And I get the response json
-    Then the response should be type "list"
+    And I take position "0" from the list
+    Then the response should be type "dictionary"
 
 Scenario: getting players response length
     When I get the list of all players
     And I get the response json
+    And I take position "0" from the list
     Then the response should have length "6"
 
 Scenario: getting players response expected fields
     When I get the list of all players
     And I get the response json
+    And I take position "0" from the list
     Then the expected fields should be present
     | field     |
     | firstname |
@@ -35,6 +38,7 @@ Scenario: getting players response expected fields
 Scenario: getting players response expected data types
     When I get the list of all players
     And I get the response json
+    And I take position "0" from the list
     Then the expected fields should be present
     | field     | data_type |
     | firstname | unicode   |
