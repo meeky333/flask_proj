@@ -23,6 +23,6 @@ Scenario: getting player by body response length
 
 Scenario: getting player by body response expected fields
     When I get the response json
-    Then the expected fields should be present
+    Then the response text should read
     | field     |
     | ACCEPTED  |

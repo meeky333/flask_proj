@@ -1,5 +1,6 @@
 # Built in
 import os
+import shutil
 import logging
 
 # Third party
@@ -19,6 +20,14 @@ def before_all(context):
         serializer="json",
         cassette_library_dir="cassettes",
         record_mode="new_episodes",
-        match_on=["uri", "method", "body"])
+        match_on=["uri", "method"])
 
     logging.getLogger("vcr").setLevel(logging.WARNING)
+
+def after_all(context):
+
+    # Delete all cassettes after tests are finished
+    shutil.rmtree("cassettes")
+
+    # delete the players list after tests are finished
+    # os.remove("../player.json")

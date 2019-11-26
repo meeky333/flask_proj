@@ -20,6 +20,15 @@ def step_impl(context):
         raise error
 
 
+@when(u'I get the response text')
+def step_impl(context):
+    """Assign `context.verify_me` to json data of `response`"""
+    try:
+        context.verify_me = context.response.content
+    except ValueError as error:
+        raise error
+
+
 @when(u'I get the response headers')
 def step_impl(context):
     """Assign `context.verify_me` to header data of `response`"""
@@ -142,6 +151,15 @@ def step_impl(context):
 
     assert_equal(len(errors), 0, "There were {} errors: {}".format(
                  len(errors), errors))
+
+
+@then(u'the response text should read')
+def step_impl(context):
+    """If the response returns text this verifies the text is equal to the expected response"""
+
+    for row in context.table:
+        assert_equal(row["field"], context.verify_me,
+            "{} is not equal to {}".format(row["field"], context.verify_me))
 
 
 @then(u'the "{parameter}" property should contain a valid uuid4 or nil uuid')

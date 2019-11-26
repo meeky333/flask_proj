@@ -6,7 +6,7 @@ Background: post and get player
 
 Scenario: getting player by id status code
     When I get the response status code
-    Then the status code should be "200"
+    Then the status code should be "202"
 
 Scenario: getting player by id content type
     When I get the response headers
@@ -15,33 +15,14 @@ Scenario: getting player by id content type
 Scenario: getting player by id data type
     When I get the response json
     And I take position "0" from the list
-    Then the response should be type "dictionary"
+    Then the response should be type "unicode"
 
 Scenario: getting player by id response length
     When I get the response json
-    And I take position "0" from the list
-    Then the response should have length "6"
+    Then the response should have length "8"
 
 Scenario: getting player by id response expected fields
     When I get the response json
-    And I take position "0" from the list
     Then the expected fields should be present
     | field     |
-    | firstname |
-    | lastname  |
-    | losses    |
-    | playerid  |
-    | ratio     |
-    | wins      |
-
-Scenario: getting player by id response expected data types
-    When I get the response json
-    And I take position "0" from the list
-    Then the expected fields should be present
-    | field     | data_type |
-    | firstname | unicode   |
-    | lastname  | unicode   |
-    | losses    | int       |
-    | playerid  | unicode   |
-    | ratio     | float     |
-    | wins      | int       |
+    | ACCEPTED  |

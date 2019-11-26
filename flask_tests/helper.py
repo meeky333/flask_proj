@@ -22,6 +22,6 @@ def new_player():
     return {
         "firstname": names.get_first_name(),
         "lastname": names.get_last_name(),
-        "wins": random.randint(0, 20),
-        "losses": random.randint(0, 20)
+        "wins": random.randint(0, 10),
+        "losses": random.randint(0, 10)
     }
